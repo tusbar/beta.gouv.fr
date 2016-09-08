@@ -1,0 +1,46 @@
+---
+title: Rattachements administratifs
+---
+{% capture build_date %}{{ site.time | date:"%Y-%m-%d" }}{% endcapture %}
+{% assign members = site.author | sort: 'employer' %}
+
+
+<table>
+	<caption>Rattachements à l'incubateur au {{ site.time | date:"%d/%m/%Y" }}</caption>
+	<thead>
+		<tr>
+			<th>Prénom et nom</th>
+			<th>Type de rattachement</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for person in members %}
+		{% capture end_date_as_string %}{{ person.end }}{% endcapture %}
+		{% if end_date_as_string == '' or end_date_as_string > build_date %}
+			<tr>
+				<td>{{ person.fullname }}</td>
+				<td>
+					{% case person.employer %}
+						{% when 'dinsic' %}
+							Agent·e DINSIC
+						{% when 'service/octo' %}
+							Salarié·e OCTO
+						{% when 'independent' %}
+							Indépendant·e en facturation directe à l'administration porteuse
+						{% when 'independent/octo' %}
+							Sous-traitant OCTO
+						{% when 'independent/ey' %}
+							Sous-traitant Ernst & Young (convention Pôle Emploi)
+						{% else %}
+							{% if person.employer contains 'admin' %}
+								Agent·e autre administration
+							{% else %}
+								{{ person.employer }}
+							{% endif %}
+					{% endcase %}
+				</td>
+			</tr>
+		{% endif %}
+	{% endfor %}
+	</tbody>
+</table>
