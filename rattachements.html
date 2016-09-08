@@ -2,7 +2,7 @@
 title: Rattachements administratifs
 ---
 {% capture build_date %}{{ site.time | date:"%Y-%m-%d" }}{% endcapture %}
-{% assign members = site.author | sort: 'employer' %}
+{% assign members = site.author | sort: 'end' %}
 
 
 <table class="ui text container">
@@ -11,6 +11,7 @@ title: Rattachements administratifs
 		<tr>
 			<th>Prénom et nom</th>
 			<th>Type de rattachement</th>
+			<th>Fin d'engagement</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -38,6 +39,9 @@ title: Rattachements administratifs
 								{{ person.employer }}
 							{% endif %}
 					{% endcase %}
+				</td>
+				<td>
+					{{ person.end | date:"%d/%m/%Y" }}
 				</td>
 			</tr>
 		{% endif %}
