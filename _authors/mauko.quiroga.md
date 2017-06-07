@@ -7,4 +7,6 @@ end: 2017-05-15
 employer: independent
 ---
 
-Engagé dans la construction d’une action publique au XXI<sup>e</sup> siècle.
+Mauko aide à Accéder aux conseils d'un·e
+
+<a class="ui button cta" href="/jobs/">Mauko a besoin de renfort!</a>
