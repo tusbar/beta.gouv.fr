@@ -1,6 +1,7 @@
 ---
 roles: un·e dev web full-stack
 startup: mes-aides
+techno: Javascript
 open: false
 ---
 

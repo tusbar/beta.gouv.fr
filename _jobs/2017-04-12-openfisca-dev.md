@@ -1,6 +1,7 @@
 ---
 roles: un·e développeur·se
 startup: openfisca
+techno: Python et / ou JS
 open: false
 ---
 
