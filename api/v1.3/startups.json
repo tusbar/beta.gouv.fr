@@ -8,7 +8,17 @@ layout: null
     [
     {% assign startups = site.startup | where_exp: 'startup', 'startup.status != death' %}
     {% for startup in startups %}
-        {% capture fallback_screenshot_path %}/img{{ startup.id }}.png{% endcapture %}
+        {% assign file_paths = site.static_files | map: 'path' %}
+        {% capture png_path %}/img{{ startup.id }}.png{% endcapture %}
+        {% capture jpg_path %}/img{{ startup.id }}.jpg{% endcapture %}
+
+        {% if file_paths contains png_path %}
+            {% assign screenshot_path = png_path %}
+        {% elsif file_paths contains jpg_path %}
+            {% assign screenshot_path = jpg_path %}
+        {% else %}
+            {% assign screenshot_path = "NO_SCREENSHOT_ERROR_CAUGHT_BY_HTML-COMMON-MISTAKES" %}
+        {% endif %}
         { "id"        : "{{ startup.id | remove: '/startup/' }}"
         , "type"      : "startup"
         , "attributes":
